@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/gr_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/icon_back"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_back_40"
+                android:drawableTint="@color/mycolor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="12dp"
+                android:drawablePadding="15dp"
+                android:drawableTint="@color/mycolor"
+                android:fontFamily="@font/rubik_medium"
+                android:shadowColor="@color/black"
+                android:text="Thông tin hóa đơn"
+                android:textAllCaps="true"
+                android:textColor="@color/mycolor"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/mycolor"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/gr_header"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="10dp"
+                android:text="ID: "
+                android:textColor="@color/mycolor"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_id"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_field_profile_fragment"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="10dp"
+                android:text="1 "
+                android:textColor="#6A6767"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="10dp"
+                android:text="Tên khách hàng: "
+                android:textColor="@color/mycolor"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_name_user"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_field_profile_fragment"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="10dp"
+                android:text="1 "
+                android:textColor="#6A6767"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="10dp"
+                android:text="Địa chỉ: "
+                android:textColor="@color/mycolor"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_address_user"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_field_profile_fragment"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="10dp"
+                android:text="Ha Noi "
+                android:textColor="#6A6767"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="10dp"
+                android:text="Tên địa điểm: "
+                android:textColor="@color/mycolor"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_name_tour"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_field_profile_fragment"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="10dp"
+                android:text="Phố cổ Hà Nội "
+                android:textColor="#6A6767"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="10dp"
+                android:text="Giá chuyến đi: "
+                android:textColor="@color/mycolor"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_price"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_field_profile_fragment"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="10dp"
+                android:text="$5000 "
+                android:textColor="#6A6767"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="10dp"
+                android:text="Ngày đặt: "
+                android:textColor="@color/mycolor"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_date_booking"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/custom_field_profile_fragment"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="10dp"
+                android:text="2022-05-02 "
+                android:textColor="#6A6767"
+                android:textColorHint="#878686"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/txt_status_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:paddingHorizontal="10dp"
+                    android:text="Trạng thái: "
+                    android:textColor="@color/mycolor"
+                    android:textColorHint="#878686"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/custom_field_profile_fragment"
+                    android:fontFamily="@font/roboto_bold"
+                    android:padding="10dp"
+                    android:text="Chờ thanh toán"
+                    android:textColor="#6A6767"
+                    android:textColorHint="#878686"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spinner_status_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:paddingHorizontal="10dp"
+                    android:text="Trạng thái: "
+                    android:textColor="@color/mycolor"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radio_group_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_now"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/mycolor"
+                        android:text="Đang điễn ra"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_finish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/mycolor"
+                        android:text="Hoàn thành"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_payment"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_button"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Thanh toán"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_cancel_tour"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_button_cancel"
+                android:fontFamily="@font/roboto_bold"
+                android:text="hủy chuyến "
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

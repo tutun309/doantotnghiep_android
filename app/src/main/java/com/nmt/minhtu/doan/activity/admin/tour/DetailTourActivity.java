@@ -1,0 +1,332 @@
+package com.nmt.minhtu.doan.activity.admin.tour;
+
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
+import com.nmt.minhtu.doan.ImgFromGrallery;
+import com.nmt.minhtu.doan.R;
+import com.nmt.minhtu.doan.activity.ConfirmInfoBookingDialog;
+import com.nmt.minhtu.doan.api.ApiService;
+import com.nmt.minhtu.doan.api.BaseResponse;
+import com.nmt.minhtu.doan.api.ResponsePOST;
+import com.nmt.minhtu.doan.data_local.DataLocalManager;
+import com.nmt.minhtu.doan.model.Booking;
+import com.nmt.minhtu.doan.model.Favorite;
+import com.nmt.minhtu.doan.model.Tour;
+import com.nmt.minhtu.doan.model.User;
+
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class DetailTourActivity extends AppCompatActivity {
+    private ProgressDialog progressDialog;
+    private TextView iconBack, txtName, txtCategory, txtPrice, txtDesc, iconFavorite;
+    private TextView tvPriceAdult, tvPriceChildren, tvPlusAdult, tvMinusAdult, tvPlusChildren, tvMinusChildren, tvTotalPrice, tvNumberTicketAdult, tvNumberTicketChildren;
+    private ImageView imgTour;
+    private ImageView btnFavorite;
+    private Button btnBooking;
+    private Tour tour;
+    private int numberTicketAdult = 0, numberTicketChildren = 0;
+
+    private boolean isFavorite = false;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_tour);
+        showProgress();
+        initView();
+        loadData();
+        initListener();
+
+    }
+
+    private void loadData() {
+        setCurrentTour();
+        checkIsFavorite();
+    }
+
+    private void initListener() {
+        iconBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+        btnBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //handleDialog();
+                DialogFragment dialog = ConfirmInfoBookingDialog.newInstance();
+                dialog.show(getSupportFragmentManager(), "");
+            }
+        });
+
+        btnFavorite.setOnClickListener(v -> {
+            if(isFavorite) {
+                cancelFavorite();
+            } else {
+                saveFavoriteTour();
+            }
+        });
+
+        tvPlusAdult.setOnClickListener(v -> {
+            if(numberTicketAdult >=0) {
+                numberTicketAdult++;
+                tvNumberTicketAdult.setText(""+numberTicketAdult);
+                updateTotalPrice();
+            }
+        });
+        tvMinusAdult.setOnClickListener(v -> {
+            if(numberTicketAdult >0) {
+                numberTicketAdult--;
+                tvNumberTicketAdult.setText(""+numberTicketAdult);
+                updateTotalPrice();
+            }
+        });
+        tvPlusChildren.setOnClickListener(v -> {
+            if(numberTicketChildren >=0) {
+                numberTicketChildren++;
+                tvNumberTicketChildren.setText(""+numberTicketChildren);
+                updateTotalPrice();
+            }
+        });
+        tvMinusChildren.setOnClickListener(v -> {
+            if(numberTicketChildren >0) {
+                numberTicketChildren--;
+                tvNumberTicketChildren.setText(""+numberTicketChildren);
+                updateTotalPrice();
+            }
+        });
+    }
+
+    private void updateTotalPrice() {
+        if(tour != null) {
+            double total = numberTicketAdult * tour.getPrice() + numberTicketChildren * tour.getPrice() * 0.75;
+            tvTotalPrice.setText("US$" + total);
+            if(total > 0) {
+                btnBooking.setEnabled(true);
+                btnBooking.setBackgroundResource(R.drawable.custom_button);
+            } else {
+                btnBooking.setEnabled(false);
+                btnBooking.setBackgroundResource(R.drawable.bg_button_gray);
+            }
+        }
+    }
+
+    private void cancelFavorite() {
+        Intent intent = getIntent();
+        int tourId = intent.getIntExtra("currentTourId", 1);
+        int userId = DataLocalManager.getUser().getId();
+        ApiService.apiService.cancelFavorite(userId, tourId).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if(response.body() != null) {
+                    if(response.body().isSuccess()) {
+                        isFavorite = false;
+                        btnFavorite.setColorFilter(Color.parseColor("#5A5858"));
+                        Toast.makeText(DetailTourActivity.this,"Đã xóa địa điểm này khỏi danh sách yêu thích", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(DetailTourActivity.this,response.body().getMess(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Toast.makeText(DetailTourActivity.this,"Có lỗi xảy ra", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void saveFavoriteTour() {
+        Intent intent = getIntent();
+        int tourId = intent.getIntExtra("currentTourId", 1);
+        Tour tour = new Tour(tourId);
+        User user = DataLocalManager.getUser();
+        if(user != null) {
+            Favorite favorite = new Favorite(user, tour);
+            ApiService.apiService.saveFavoriteTour(favorite).enqueue(new Callback<BaseResponse>() {
+                @Override
+                public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                    if(response.body() != null) {
+                        if(response.body().isSuccess()) {
+                            isFavorite = true;
+                            btnFavorite.setColorFilter(Color.parseColor("#D82020"));
+                            Toast.makeText(DetailTourActivity.this,"Đã thêm vào danh sách yêu thích", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(DetailTourActivity.this,"Có lỗi xảy ra", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<BaseResponse> call, Throwable t) {
+                    Toast.makeText(DetailTourActivity.this,"Có lỗi xảy ra", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
+
+    private void setCurrentTour() {
+        Intent intent = getIntent();
+        int idTour = intent.getIntExtra("currentTourId", 1);
+        ApiService.apiService.getTourById(idTour).enqueue(new Callback<Tour>() {
+            @Override
+            public void onResponse(Call<Tour> call, Response<Tour> response) {
+                tour = response.body();
+                if(tour != null){
+                    imgTour.setImageBitmap(ImgFromGrallery.deCodeToBase64(tour.getImg()));
+                    txtName.setText(tour.getName());
+                    txtCategory.setText("Thành phố: "+tour.getCategory().getName());
+                    txtPrice.setText("Giá tiêu chuẩn: $"+tour.getPrice());
+                    tvPriceAdult.setText("US$" + tour.getPrice());
+                    tvPriceChildren.setText("US$" + tour.getPrice()*0.75);
+                    txtDesc.setText(tour.getDesc());
+                    progressDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Tour> call, Throwable t) {
+                Toast.makeText(DetailTourActivity.this,"call API loi", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void checkIsFavorite() {
+        Intent intent = getIntent();
+        int tourId = intent.getIntExtra("currentTourId", 1);
+        int userId = DataLocalManager.getUser().getId();
+        ApiService.apiService.checkIsFavorite(userId, tourId).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if(response.body() != null) {
+                    if(response.body().isSuccess()) {
+                        isFavorite = true;
+                        btnFavorite.setColorFilter(Color.parseColor("#D82020"));
+                    } else {
+                        isFavorite = false;
+                        btnFavorite.setColorFilter(Color.parseColor("#5A5858"));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Toast.makeText(DetailTourActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void handleDialog() {
+        try {
+            final Dialog dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_smile);
+
+
+            Window window = dialog.getWindow();
+            if(window == null){
+                return;
+            }
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            WindowManager.LayoutParams windowAttributes = window.getAttributes();
+            windowAttributes.gravity = Gravity.CENTER;
+            window.setAttributes(windowAttributes);
+
+
+            Button btnSure = (Button) dialog.findViewById(R.id.btn_sure);
+            Button btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
+
+            // xu ly nhan nut sure
+            btnSure.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    User user = DataLocalManager.getUser();
+                    Date date = new Date();
+                    java.sql.Date currentDate = new java.sql.Date(date.getTime());
+                    Booking booking= new Booking(user,tour,currentDate,"Chờ thanh toán");
+                    ApiService.apiService.createBooking(booking).enqueue(new Callback<ResponsePOST>() {
+                        @Override
+                        public void onResponse(Call<ResponsePOST> call, Response<ResponsePOST> response) {
+                            if(response.isSuccessful()){
+                                ResponsePOST responsePOST = response.body();
+                                if(responsePOST.getErrCode()==0){
+                                    Toast.makeText(DetailTourActivity.this,"Đặt tour thành công! Hãy vào lịch sử để xem chi tiết", Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponsePOST> call, Throwable t) {
+                            Toast.makeText(DetailTourActivity.this,"call API loi", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            });
+
+            //---nut cancel---
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.setCancelable(false);
+            dialog.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    private void showProgress(){
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Xin đợi giây lát...!");
+        progressDialog.show();
+    }
+    private void initView() {
+        // tvPriceAdult, tvPriceChildren, tvPlusAdult, tvMinusAdult, tvPlusChildren, tvMinusChildren, tvTotalPrice
+        txtCategory = findViewById(R.id.txt_category_detail_tour);
+        txtName = findViewById(R.id.txt_name_detalTour);
+        txtPrice = findViewById(R.id.txt_gia_detail_tour);
+        txtDesc = findViewById(R.id.txt_desc_detail_tour);
+        imgTour = findViewById(R.id.img_detail_tour);
+        btnBooking = findViewById(R.id.btn_booking);
+        iconBack = findViewById(R.id.icon_back);
+        btnFavorite = findViewById(R.id.btn_favorite);
+        tvPriceAdult = findViewById(R.id.tv_price_adult);
+        tvPriceChildren = findViewById(R.id.tv_price_children);
+        tvPlusAdult = findViewById(R.id.tv_plus);
+        tvMinusAdult = findViewById(R.id.tv_minus);
+        tvPlusChildren = findViewById(R.id.tv_plus_children);
+        tvMinusChildren = findViewById(R.id.tv_minus_childen);
+        tvTotalPrice = findViewById(R.id.tv_total_money);
+        tvNumberTicketAdult = findViewById(R.id.tv_number_ticket_adult);
+        tvNumberTicketChildren = findViewById(R.id.tv_number_ticket_children);
+    }
+}

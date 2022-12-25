@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.FragmentHome"
+    android:background="@color/white">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/custom_color_gradien"
+        android:drawableLeft="@drawable/ic_baseline_favorite_24"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:shadowRadius="5"
+        android:text="Địa điểm yêu thích"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_reload"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_header"
+        android:padding="5dp">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvc_list_tour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_history"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="15dp"
+            android:paddingBottom="5dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+</RelativeLayout>

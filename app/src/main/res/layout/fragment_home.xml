@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:background="@color/white"
+    tools:context=".activity.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/header_home"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/img_background"
+        android:padding="15dp">
+
+
+        <RelativeLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-2dp">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/rubik_medium"
+                android:shadowColor="@color/white"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="2"
+                android:text="Xin chào Minh Tú!"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageAvatar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/custom_solid_img"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/info"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_search_background"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:drawablePadding="15dp"
+            android:hint="Tìm kiếm chuyến đi"
+            android:paddingHorizontal="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="#62878F" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header_home">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/txt_danhmucdiadiem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentStart="true"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:fontFamily="@font/roboto_bold"-->
+<!--                    android:text="Danh mục địa điểm"-->
+<!--                    android:textColor="@color/mycolor"-->
+<!--                    android:textSize="20sp" />-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleview_danhmucdiadiem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp" />
+            </RelativeLayout>
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_diadiemnoibat"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_below="@+id/txt_danhmucdiadiem"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp" />
+            <RelativeLayout
+                android:id="@+id/txt_motsodiadiem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewpager_diadiemnoibat">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Một số địa điểm"
+                    android:textColor="@color/mycolor"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_see_all_tour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Xem tất cả"
+                    android:textColor="@color/mycolor"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleview_list_tour_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_motsodiadiem"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

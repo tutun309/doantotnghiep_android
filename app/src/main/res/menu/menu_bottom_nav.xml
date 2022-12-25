@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_trangchu"
+        android:icon="@drawable/ic_flight_takeoff_24"
+        android:title=""
+        android:checked="true"/>
+    <item android:id="@+id/menu_lichsu" android:icon="@drawable/ic_history_24" android:title="" />
+    <item android:id="@+id/menu_thongbao" android:icon="@drawable/ic_baseline_favorite_24" android:title=""/>
+    <item android:id="@+id/menu_profile" android:icon="@drawable/ic_person_24" android:title=""/>
+</menu>

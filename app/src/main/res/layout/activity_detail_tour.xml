@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/gr_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/icon_back"
+                android:layout_width="25dp"
+                android:layout_height="15dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_baseline_arrow_back_40"
+                android:drawableTint="@color/mycolor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/rubik_medium"
+                android:shadowColor="@color/black"
+                android:text="Chi tiết địa điểm"
+                android:textAllCaps="true"
+                android:textColor="@color/mycolor"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/gr_header"
+        android:layout_above="@+id/group_btn_booking">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_detail_tour"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/img_bg_home"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:id="@+id/txt_name_detalTour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="2"
+                    android:text="Phố cổ Hội An"
+                    android:textColor="@color/btn_color_end"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/txt_category_detail_tour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_name_detalTour"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Tu: Ha Noi "
+                    android:textColor="#5A5B5C"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_gia_detail_tour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_category_detail_tour"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Giá: $500 "
+                    android:textColor="@color/mycolor"
+                    android:textSize="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edit_text"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Số lượng vé: "
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="5dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_alignParentStart="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="Người lớn (10-75 tuổi)"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:layout_marginBottom="5dp"/>
+                            <TextView
+                                android:id="@+id/tv_price_adult"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="US$50"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_boder_gray"
+                            android:layout_alignParentEnd="true"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="5dp">
+
+                            <TextView
+                                android:id="@+id/tv_minus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="-"
+                                android:textColor="@color/black"
+                                android:paddingHorizontal="15dp"
+                                android:textSize="28sp" />
+                            <TextView
+                                android:id="@+id/tv_number_ticket_adult"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:paddingHorizontal="15dp"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/tv_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="+"
+                                android:textColor="@color/black"
+                                android:paddingHorizontal="15dp"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+                        <LinearLayout
+                            android:layout_alignParentStart="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="Trẻ em (5-9 tuổi)"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:layout_marginBottom="5dp"/>
+                            <TextView
+                                android:id="@+id/tv_price_children"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="US$25"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/bg_boder_gray"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_minus_childen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:paddingHorizontal="15dp"
+                                android:text="-"
+                                android:textColor="@color/black"
+                                android:textSize="28sp" />
+
+                            <TextView
+                                android:id="@+id/tv_number_ticket_children"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:paddingHorizontal="15dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tv_plus_children"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:paddingHorizontal="15dp"
+                                android:text="+"
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Tổng cộng: "
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_total_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="US$0 "
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_gioithieu_detail_tour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_gia_detail_tour"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Giới thiệu: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/txt_desc_detail_tour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_gioithieu_detail_tour"
+                    android:layout_marginTop="5dp"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="7sp"
+                    android:text="Hội An là một thành phố thuộc tỉnh Quảng Nam có nhiều khu phố cổ được xây từ thế kỷ 16 và vẫn còn tồn tại gần như nguyên vẹn đến nay. Trong các tài liệu cổ của phương Tây, Hội An được gọi Faifo. Phố cổ Hội An được công nhận là một di sản thế giới UNESCO từ năm 1999. Đây là địa điểm thu hút được rất nhiều khách Du Lịch Đà Nẵng – Hội An.Là một kiểu cảng thị truyền thống Đông Nam Á duy nhất ở Việt Nam, hiếm có trên thế giới, Hội An giữ được gần như nguyên vẹn hơn một nghìn di tích kiến trúc như phố xá, nhà cửa, hội quán, đình, chùa, miếu, nhà thờ tộc, giếng cổ, mộ cổ… Đến đây du khách du lịch Hà Nội Đà Nẵng sẽ có dịp chiêm ngưỡng các kiến trúc vừa có sắc thái nghệ thuật truyền thống của Việt Nam, vừa thể hiện sự giao lưu hội nhập văn hoá với các nước phương Đông và phương Tây."
+                    android:textColor="#3C3B3B"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_gia_detail_tour"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Đánh giá: "
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/item"
+                    android:backgroundTint="@color/white" >
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
+                        <RelativeLayout
+                            android:id="@+id/gr_tour_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/gr_header"
+                            android:padding="5dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/img_booked_tour"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_alignParentStart="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/img_background" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_toRightOf="@+id/img_booked_tour"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_nameBookedTour"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="Minh Tú"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                                <RatingBar
+                                    style="?android:attr/ratingBarStyleIndicator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:isIndicator="false"
+                                    android:numStars="5"
+                                    android:rating="4.5"
+                                    android:scaleX=".7"
+                                    android:scaleY=".7"
+                                    android:theme="@style/MyRatingBar"
+                                    android:transformPivotX="0dp"
+                                    android:layout_marginTop="5dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chuyến đi tuyệt với, có cực kì nhiều cảnh đẹp"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/group_btn_booking"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#E6E6E8"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:paddingHorizontal="10sp"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/btn_favorite"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_favorite"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/btn_booking"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_button_gray"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingHorizontal="10dp"
+            android:text="Đặt tour ngay!"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:enabled="false"/>
+
+    </LinearLayout>
+</RelativeLayout>

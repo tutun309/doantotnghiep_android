@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Booking Travel</string>
+    <string name="btn_show">Show</string>
+    <string name="btn_display">Display</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_home">Home</string>
+    <string name="btn_buy_now">Buy now</string>
+    <string name="btn_detail">Detail</string>
+    <string name="btn_dang_nhap">Đăng nhập</string>
+    <string name="btn_tao_tai_khoan">Tạo tài khoản</string>
+
+
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+
+    <string name="txt_quay_ve_dang_nhap">Quay về trang đăng nhập</string>
+    <string name="txt_title">Booking Travel</string>
+    <string name="txt_quen_mk">Quên mật khẩu</string>
+    <string name="txt_lua_chon_khac">Lựa chọn khác</string>
+    <string name="txt_tao_tai_khoan">Tạo tài khoản</string>
+    <string name="txt_your_platform">Your platform</string>
+    <string name="txt_gender">Your gender</string>
+    <string name="txt_rate_me">Rate me</string>
+    <string name="txt_your_country">Your country</string>
+    <string name="txt_your_university">Your university</string>
+    <string name="txt_your_favorite">Your favorite</string>
+
+    <string name="edt_email"> Email</string>
+    <string name="edt_pass">Mật khẩu</string>
+    <string name="edt_user">Tên người dùng</string>
+    <string name="edt_nhap_lai_mat_khau">Nhập lại mật khẩu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="statusList">
+        <item>Chờ thanh toán</item>
+        <item>Đã xác nhận thanh toán</item>
+        <item>Đang diễn ra</item>
+        <item>Đã hoàn thành</item>
+        <item>Đi lại</item>
+    </string-array>
+
+</resources>

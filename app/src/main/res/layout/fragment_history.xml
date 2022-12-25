@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:background="@color/white"
+    tools:context=".activity.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/header_history"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/img_background"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+
+        <RelativeLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-2dp">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_bold"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="6"
+                android:shadowRadius="5"
+                android:text="Chuyến đi của bạn !"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp" />
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/info"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_search_background"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:drawablePadding="16dp"
+            android:hint="Tìm chuyến đi của bạn"
+            android:paddingHorizontal="10dp"
+            android:textColorHint="#62878F" />
+    </RelativeLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_reload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_history">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview_booked_tour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_history"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="15dp"
+            android:paddingBottom="5dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</RelativeLayout>
