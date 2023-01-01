@@ -18,6 +18,7 @@ import com.nmt.minhtu.doan.api.ApiService
 import com.nmt.minhtu.doan.data_local.DataLocalManager
 import com.nmt.minhtu.doan.model.Favorite
 import com.nmt.minhtu.doan.model.Tour
+import com.nmt.minhtu.doan.utils.Utils
 import kotlinx.android.synthetic.main.fragment_notifi.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,7 +42,9 @@ class FragmentFavorite : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadData()
+        if(Utils.isLogin()) {
+            loadData()
+        }
         initListener()
     }
 

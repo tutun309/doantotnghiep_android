@@ -7,4 +7,9 @@
         <item name="colorControlNormal">#797676</item>
         <item name="colorControlActivated">@color/mycolor</item>
     </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/mycolor</item>
+    </style>
 </resources>
+

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/white">
 
@@ -50,11 +51,13 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/mycolor" />
+
+
     </LinearLayout>
 
 
     <RelativeLayout
-        android:id="@+id/gr_payment"
+        android:id="@+id/line_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -65,24 +68,88 @@
             android:layout_height="30dp"
             android:src="@drawable/ic_payment_24"
             android:layout_alignParentStart="true"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/ic_payment"
             android:fontFamily="@font/roboto_bold"
             android:text="Thanh toán "
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:layout_marginBottom="5dp"
-            android:layout_toEndOf="@+id/ic_payment"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="15dp"/>
+            android:textSize="18sp" />
+
         <ImageView
+            android:id="@+id/ic_next_payment"
             android:layout_width="20dp"
             android:layout_height="17dp"
-            android:src="@drawable/ic_next_black"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
+            android:src="@drawable/ic_next_black" />
+
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/gr_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/ic_payment"
+            android:textStyle="italic"
+            android:text="Vui lòng chuyển tiền tới tài khoản sau và gửi hình ảnh thông tin giao dịch *\nSTK: 45010004741204 - BIDV (Công ty CP BookingTravel.com)"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/ic_payment"
+            android:textStyle="italic"
+            android:text="Chưa có thông tin thanh toán"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/img_payment"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="2dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/img_add_picture"
+            android:background="@drawable/bg_boder_gray"/>
+
+        <TextView
+            android:id="@+id/btn_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/bg_button_gray"
+            android:clickable="false"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Thanh toán"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -91,7 +158,7 @@
         android:layout_marginHorizontal="10dp"/>
 
     <RelativeLayout
-        android:id="@+id/gr_comment"
+        android:id="@+id/line_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -114,13 +181,87 @@
             android:layout_toEndOf="@+id/ic_comment"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"/>
+
         <ImageView
+            android:id="@+id/ic_next_comment"
             android:layout_width="20dp"
             android:layout_height="17dp"
-            android:src="@drawable/ic_next_black"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
+            android:src="@drawable/ic_next_black" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/gr_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:paddingHorizontal="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto"
+            android:text="Chất lượng chuyến đi:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/tv_rating"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:rating="0"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            android:theme="@style/MyRatingBar"
+            android:transformPivotX="0dp"
+            android:layout_marginTop="5dp"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto"
+            android:text="Nhận xét của bạn:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_boder_gray"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            tools:text="Chuyến đi vui vẻ, có rất nhiều cnahr đẹp,có rất nhiều cnahr đẹp"
+            android:textColorHint="#878686"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/btn_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/bg_button_gray"
+            android:clickable="false"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Gửi đánh giá"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -129,7 +270,7 @@
         android:layout_marginHorizontal="10dp"/>
 
     <RelativeLayout
-        android:id="@+id/gr_cancel"
+        android:id="@+id/line_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -141,18 +282,20 @@
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:src="@drawable/ic_close_24" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Thanh toán "
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="5dp"
             android:layout_toEndOf="@+id/ic_cancel"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="15dp"/>
+            android:fontFamily="@font/roboto_bold"
+            android:text="Hủy chuyến "
+            android:textColor="@color/black"
+            android:textSize="18sp" />
         <ImageView
+            android:id="@+id/ic_next_cancel"
             android:layout_width="20dp"
             android:layout_height="17dp"
             android:src="@drawable/ic_next_black"
@@ -160,11 +303,49 @@
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
+
+
+    <LinearLayout
+        android:id="@+id/gr_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/ic_payment"
+            android:textStyle="italic"
+            android:text="Bạn sẽ không thể hủy chuyến khi chuyến đi đang diễn ra. Khi bạn đã thanh toán chuyến đi vui lòng chờ hệ thống duyệt!"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+
+            />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Hủy chuyến đi"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/mycolor"
         android:layout_marginHorizontal="10dp"/>
-
 
 </LinearLayout>

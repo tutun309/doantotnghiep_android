@@ -7,17 +7,26 @@
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/drawable/custom_button.xml" value="0.1635" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/drawable/custom_edit_text.xml" value="0.1635" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/drawable/ic_favorite.xml" value="0.1635" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/drawable/ic_next_black.xml" value="0.2285" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/drawable/ic_star_rate_24.xml" value="0.2115" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/activity_detail_booking.xml" value="0.23229166666666667" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/activity_detail_booking_v2.xml" value="0.34479166666666666" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/activity_detail_tour.xml" value="0.264" />
-        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/activity_list_tour.xml" value="0.34479166666666666" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/admin_custom_item_category.xml" value="0.16979166666666667" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/admin_custom_item_list_booking.xml" value="0.34479166666666666" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/admin_custom_item_list_tour.xml" value="0.34479166666666666" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/custom_item_booked_tour.xml" value="0.34479166666666666" />
-        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/dialog_confirm_info_booking.xml" value="0.34479166666666666" />
-        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/dialog_manage_booking.xml" value="0.264" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/custom_item_list_danhmuc.xml" value="0.4" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/custom_item_slider_home.xml" value="0.16979166666666667" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/dialog_confirm_info_booking.xml" value="0.2" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/dialog_manage_booking.xml" value="0.4" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/dialog_smile.xml" value="0.23229166666666667" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/fragment_history.xml" value="0.23229166666666667" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/fragment_notifi.xml" value="0.23229166666666667" />
+        <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/fragment_profile.xml" value="0.34479166666666666" />
         <entry key="..\:/0. Book/0. DATN/app/src/main/res/layout/item_comment.xml" value="0.34375" />
       </map>
     </option>

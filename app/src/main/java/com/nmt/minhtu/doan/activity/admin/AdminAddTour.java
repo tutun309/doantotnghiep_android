@@ -94,7 +94,7 @@ public class AdminAddTour extends AppCompatActivity {
                 finish();
             }
         });
-        btnAddTour.setOnClickListener(new View.OnClickListener() {
+        /*btnAddTour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
@@ -127,7 +127,7 @@ public class AdminAddTour extends AppCompatActivity {
                 }catch (Exception e){
                 }
             }
-        });
+        });*/
     }
 
     private void initView(){

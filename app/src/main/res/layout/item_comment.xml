@@ -45,6 +45,7 @@
                     android:textSize="16sp" />
 
                 <RatingBar
+                    android:id="@+id/tv_rating"
                     style="?android:attr/ratingBarStyleIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

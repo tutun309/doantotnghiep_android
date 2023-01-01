@@ -41,18 +41,17 @@ public class AdminListBookingAdapter extends RecyclerView.Adapter<AdminListBooki
     @Override
     public void onBindViewHolder(@NonNull ListBookingViewHolder holder, int position) {
         Booking booking = bookingList.get(position);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         holder.imgAvt.setImageBitmap(ImgFromGrallery.deCodeToBase64(booking.getTour().getImg()));
         holder.txtNameTour.setText(booking.getTour().getName());
         holder.txUserName.setText("Khách: "+booking.getUser().getName());
-        holder.txtStatus.setText(booking.getStatus());
-        holder.txtDateBooking.setText(dateFormat.format(booking.getDate()));
+        holder.txtStatus.setText(booking.getBookingStatus());
+        holder.txtDateBooking.setText(booking.getTimeBooking() == null ? "" : booking.getTimeBooking());
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
-                    Intent intent = new Intent(context.getApplicationContext(), DetailBookingActivity.class);
+                    Intent intent = new Intent(context.getApplicationContext(), DetailBookingActivityV2.class);
                     intent.putExtra("currentBookingId", booking.getId());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

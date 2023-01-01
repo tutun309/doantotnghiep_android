@@ -4,7 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.nmt.minhtu.doan.model.Booking;
 import com.nmt.minhtu.doan.model.Category;
+import com.nmt.minhtu.doan.model.Comment;
 import com.nmt.minhtu.doan.model.Favorite;
+import com.nmt.minhtu.doan.model.Payment;
+import com.nmt.minhtu.doan.model.Ticket;
+import com.nmt.minhtu.doan.model.TicketBooking;
 import com.nmt.minhtu.doan.model.Tour;
 import com.nmt.minhtu.doan.model.User;
 
@@ -90,7 +94,7 @@ public interface ApiService {
 
     //---------------------booking------------
     @POST("/api/booking/create-new-booking")
-    Call<ResponsePOST> createBooking(@Body Booking booking);
+    Call<BaseResponsePost<Booking>> createBooking(@Body Booking booking);
 
     @GET("/api/booking/get-all-booking")
     Call<List<Booking>> getAllBooking();
@@ -99,7 +103,7 @@ public interface ApiService {
     Call<Booking> getBookingById(@Path("id") int id);
 
     @POST("/api/booking/update-status-booking")
-    Call<ResponsePOST> updateStatusBooking(@Body Booking booking);
+    Call<BaseResponse> updateStatusBooking(@Body Booking booking);
 
     @GET("/api/booking/get-booking-by-userid/{userId}")
     Call<List<Booking>> getBookingByUserId(@Path("userId") int userId);
@@ -118,4 +122,28 @@ public interface ApiService {
     @GET("/api/favorite/get-favorite-by-userid/{userId}")
     Call<List<Favorite>> getListFavorite(@Path("userId") int userId);
 
+    //-------------ticket---------------
+    @GET("/api/ticket/get-ticket-by-tourId/{tourId}")
+    Call<Ticket> getTicketByTourId(@Path("tourId") int tourId);
+
+    //-------------ticketBooking---------------
+    @POST("/api/ticketBooking/create-ticketBooking")
+    Call<BaseResponse> createTicketBooking(@Body TicketBooking ticketBooking);
+
+    @GET("/api/ticketBooking/get-ticketBooking-by-bookingId/{bookingId}")
+    Call<TicketBooking> getTicketBookingByBookingId(@Path("bookingId") int bookingId);
+
+    //------------------payment-------------
+    @POST("/api/payment/create-payment")
+    Call<BaseResponse> createPayment(@Body Payment payment);
+
+    @GET("/api/payment/get-payment-by-bookingId/{bookingId}")
+    Call<BaseResponsePost<Payment>> getPaymentByBookingId(@Path("bookingId") int bookingId);
+
+    //------------------comment-------------
+    @POST("/api/comment/create-comment")
+    Call<BaseResponse> createComment(@Body Comment comment);
+
+    @GET("/api/comment/get-comment-by-bookingId/{bookingId}")
+    Call<BaseResponsePost<Comment>> getCommentByBookingId(@Path("bookingId") int bookingId);
 }

@@ -171,7 +171,7 @@ public class AdminUpdateDeleteTour extends AppCompatActivity {
             } else {
                 currentTour.setImg(img);
                 currentTour.setName(name);
-                currentTour.setPrice(Float.parseFloat(price));
+                //currentTour.setPrice(Float.parseFloat(price));
                 currentTour.setDesc(desc);
                 currentTour.setCategory(category);
                 Log.d("TAG", "updateTour: "+currentTour.getId());

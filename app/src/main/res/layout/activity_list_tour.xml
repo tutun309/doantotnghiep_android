@@ -33,7 +33,7 @@
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/roboto_bold"
                 android:shadowRadius="5"
-                android:text="Danh sách chuyến đi"
+                android:text="Danh sách địa điểm"
                 android:textColor="@color/mycolor"
                 android:textSize="26sp"
                 android:textStyle="bold" />

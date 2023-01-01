@@ -2,7 +2,6 @@ package com.nmt.minhtu.doan.activity.booking;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.nmt.minhtu.doan.R;
-import com.nmt.minhtu.doan.activity.ConfirmInfoBookingDialog;
 import com.nmt.minhtu.doan.activity.managebooking.ManageBookingDialog;
 import com.nmt.minhtu.doan.api.ApiService;
 import com.nmt.minhtu.doan.api.ResponsePOST;
@@ -151,10 +149,10 @@ public class DetailBookingActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        btnManageBooking.setOnClickListener(v -> {
+        /*btnManageBooking.setOnClickListener(v -> {
             DialogFragment dialogFragment = ManageBookingDialog.newInstance();
             dialogFragment.show(getSupportFragmentManager(),"");
-        });
+        });*/
     }
 
     private void handleDialogPayment() {
@@ -185,7 +183,7 @@ public class DetailBookingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     currentBooking.setStatus("Đã thanh toán");
-                    ApiService.apiService.updateStatusBooking(currentBooking).enqueue(new Callback<ResponsePOST>() {
+                    /*ApiService.apiService.updateStatusBooking(currentBooking).enqueue(new Callback<ResponsePOST>() {
                         @Override
                         public void onResponse(Call<ResponsePOST> call, Response<ResponsePOST> response) {
                             ResponsePOST responsePOST = response.body();
@@ -198,7 +196,7 @@ public class DetailBookingActivity extends AppCompatActivity {
                             Toast.makeText(DetailBookingActivity.this,"Có lỗi xảy ra", Toast.LENGTH_LONG).show();
 
                         }
-                    });
+                    });*/
 
                 }
             });

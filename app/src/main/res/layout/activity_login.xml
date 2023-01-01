@@ -55,18 +55,6 @@
         android:fontFamily="@font/roboto_bold"
         android:background="@drawable/custom_edit_text" />
 
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="22dp"
-        android:text="@string/txt_quen_mk"
-        android:textColor="@color/mycolor"
-        android:textSize="20sp"
-        android:fontFamily="@font/roboto_bold"/>
-
     <TextView
         android:id="@+id/txt_dangki"
         android:layout_width="wrap_content"
@@ -74,7 +62,7 @@
         android:layout_gravity="right"
         android:layout_marginRight="22dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Đăng kí"
+        android:text="Đăng kí tài khoản"
         android:textColor="@color/mycolor"
         android:textSize="20sp" />
 

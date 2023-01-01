@@ -2,6 +2,7 @@ package com.nmt.minhtu.doan.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nmt.minhtu.doan.R;
 import com.nmt.minhtu.doan.adapter.MainViewpagerAdapter;
+import com.nmt.minhtu.doan.data_local.DataLocalManager;
 
 public class MainActivity extends AppCompatActivity {
     public ViewPager2 viewPager2;
@@ -35,10 +37,18 @@ public class MainActivity extends AppCompatActivity {
                         viewPager2.setCurrentItem(0);
                         break;
                     case R.id.menu_lichsu:
-                        viewPager2.setCurrentItem(1);
+                        if(DataLocalManager.getUser() == null) {
+                            Toast.makeText(MainActivity.this, "Bạn cần đăng nhập để thực hiện chức năng này!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            viewPager2.setCurrentItem(1);
+                        }
                         break;
                     case R.id.menu_thongbao:
-                        viewPager2.setCurrentItem(2);
+                        if(DataLocalManager.getUser() == null) {
+                            Toast.makeText(MainActivity.this, "Bạn cần đăng nhập để thực hiện chức năng này!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            viewPager2.setCurrentItem(2);
+                        }
                         break;
                     case R.id.menu_profile:
                         viewPager2.setCurrentItem(3);

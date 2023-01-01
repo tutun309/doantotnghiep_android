@@ -17,6 +17,7 @@ import com.nmt.minhtu.doan.R;
 import com.nmt.minhtu.doan.activity.admin.AdminUpdateDeleteCategory;
 import com.nmt.minhtu.doan.data_local.DataLocalManager;
 import com.nmt.minhtu.doan.model.Category;
+import com.nmt.minhtu.doan.model.User;
 
 import java.util.List;
 
@@ -32,11 +33,15 @@ public class AdminCategoryAdapter extends RecyclerView.Adapter<AdminCategoryAdap
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int vaitro = DataLocalManager.getUser().getVaitroId();
+        User user = DataLocalManager.getUser();
         View view = null;
-        if(vaitro == 0){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_custom_item_category, parent, false);
-        } else if(vaitro == 1){
+        if(user != null) {
+            if(user.getVaitroId() == 0){
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_custom_item_category, parent, false);
+            } else if(user.getVaitroId() == 1){
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item_slider_home, parent, false);
+            }
+        } else {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_item_slider_home, parent, false);
         }
         return new CategoryViewHolder(view);

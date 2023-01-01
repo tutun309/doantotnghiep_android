@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
 
     <LinearLayout
@@ -63,13 +64,16 @@
         <ImageView
             android:id="@+id/img_booked_tour"
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/gr_tour"
             android:layout_alignParentStart="true"
-            android:padding="5dp"
+
             android:scaleType="centerCrop"
-            android:src="@drawable/img_background" />
+            tools:src="@drawable/img_pho_co" />
 
         <LinearLayout
+            android:id="@+id/gr_tour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -82,25 +86,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Phố cổ Hội An"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:text="Phố cổ Hà Nội" />
 
             <TextView
+                android:id="@+id/tv_periodTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="Lịch trình: 3 ngày 2 đêm"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="Lịch trình: 3 ngày 2 đêm" />
 
             <TextView
+                android:id="@+id/tv_ticket_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="1 x vé tiêu chuẩn"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="2 x vé tiêu chuẩn" />
 
         </LinearLayout>
     </RelativeLayout>
@@ -136,13 +142,14 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_boder_gray"
                 android:fontFamily="@font/roboto"
                 android:padding="10dp"
-                android:text="Nguyễn Minh Tú "
+                tools:text="Nguyễn Minh Tú "
                 android:textColorHint="#878686"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -157,13 +164,14 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_email"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_boder_gray"
                 android:fontFamily="@font/roboto"
                 android:padding="10dp"
-                android:text="minhtunguyen2k@gmail.com"
+                tools:text="minhtunguyen2k@gmail.com"
                 android:textColorHint="#878686"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -178,13 +186,14 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_phone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_boder_gray"
                 android:fontFamily="@font/roboto"
                 android:padding="10dp"
-                android:text="0378315598 "
+                tools:text="0378315598 "
                 android:textColorHint="#878686"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -199,18 +208,20 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_time_start"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_boder_gray"
                 android:fontFamily="@font/roboto"
                 android:padding="10dp"
-                android:text="12/12/2022"
+                tools:text="12/12/2022"
                 android:textColorHint="#878686"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -220,13 +231,14 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_total_price"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_boder_gray"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/roboto_bold"
                 android:padding="10dp"
-                android:text="$500"
+                tools:text="1800000 VND"
                 android:textColor="@color/black"
                 android:textColorHint="#878686"
                 android:textSize="16sp" />
@@ -241,15 +253,16 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_status"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_boder_gray"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/roboto_bold"
                 android:padding="10dp"
                 android:textColorHint="#878686"
                 android:textColor="@color/black"
-                android:text="Chờ thanh toán"
+                tools:text="Chờ thanh toán"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
@@ -263,8 +276,8 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/roboto_bold"
-        android:text="Quản lý chuyến đi"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:text="Quản lý chuyến đi" />
 
 </RelativeLayout>

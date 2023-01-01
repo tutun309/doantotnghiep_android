@@ -17,6 +17,7 @@ import com.nmt.minhtu.doan.api.ApiService;
 import com.nmt.minhtu.doan.data_local.DataLocalManager;
 import com.nmt.minhtu.doan.model.Booking;
 import com.nmt.minhtu.doan.model.User;
+import com.nmt.minhtu.doan.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,24 +67,26 @@ public class FragmentHistory extends Fragment {
     }
 
     private void setListBooking(){
-        User user = DataLocalManager.getUser();
-        ApiService.apiService.getBookingByUserId(user.getId()).enqueue(new Callback<List<Booking>>() {
-            @Override
-            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                if(response.isSuccessful()){
-                    bookedTourList = response.body();
-                    AdminListBookingAdapter adapter = new AdminListBookingAdapter(bookedTourList, getContext());
-                    rcvListBooking.setAdapter(adapter);
-                    rcvListBooking.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
-                    progressDialog.dismiss();
+        if (Utils.INSTANCE.isLogin()) {
+            User user = DataLocalManager.getUser();
+            ApiService.apiService.getBookingByUserId(user.getId()).enqueue(new Callback<List<Booking>>() {
+                @Override
+                public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                    if(response.isSuccessful()){
+                        bookedTourList = response.body();
+                        AdminListBookingAdapter adapter = new AdminListBookingAdapter(bookedTourList, getContext());
+                        rcvListBooking.setAdapter(adapter);
+                        rcvListBooking.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+                        progressDialog.dismiss();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<Booking>> call, Throwable t) {
+                @Override
+                public void onFailure(Call<List<Booking>> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     private void showProgress(){

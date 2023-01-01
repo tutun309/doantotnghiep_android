@@ -27,6 +27,7 @@ import com.nmt.minhtu.doan.data_local.DataLocalManager;
 import com.nmt.minhtu.doan.model.Category;
 import com.nmt.minhtu.doan.model.Tour;
 import com.nmt.minhtu.doan.model.User;
+import com.nmt.minhtu.doan.utils.Utils;
 
 import java.util.List;
 
@@ -83,22 +84,26 @@ public class FragmentHome extends Fragment {
         imgAvatar = view.findViewById(R.id.imageAvatar);
         rcvListTour = view.findViewById(R.id.recycleview_list_tour_home);
         editTextSearch = view.findViewById(R.id.editTextSearch);
-//
-        //------------set thong tin ca nhan---------
-        User user = DataLocalManager.getUser();
-        txtName.setText("Xin chào " +user.getName()+" !");
-        imgAvatar.setImageBitmap(ImgFromGrallery.deCodeToBase64(user.getImg()));
 
-
-
-        //--------------xu ly--------------
+        setupView();
         showProgress();
         setListCategory();
         setRcvListTourHome();
-//        setSlider();
 
 
         return view;
+    }
+
+    private void setupView() {
+        if(Utils.INSTANCE.isLogin()) {
+            //------------set thong tin ca nhan---------
+            User user = DataLocalManager.getUser();
+            txtName.setText("Xin chào " +user.getName()+" !");
+            imgAvatar.setImageBitmap(ImgFromGrallery.deCodeToBase64(user.getImg()));
+        } else {
+            txtName.setText("Chúc ngày mới vui vẻ!");
+            imgAvatar.setImageResource(R.drawable.profile);
+        }
     }
 
     private void setListCategory() {
@@ -157,5 +162,11 @@ public class FragmentHome extends Fragment {
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Xin hãy đợi giây lát...!");
         progressDialog.show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setupView();
     }
 }

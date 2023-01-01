@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_alignParentTop="true"
     android:background="@color/white"
     tools:context=".activity.MainActivity">
@@ -13,7 +14,7 @@
         android:layout_height="130dp"
         android:layout_alignParentTop="true"
         android:background="@drawable/img_background"
-        android:padding="15dp">
+        android:padding="10dp">
 
 
         <RelativeLayout
@@ -27,15 +28,15 @@
                 android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:fontFamily="@font/rubik_medium"
                 android:shadowColor="@color/white"
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="2"
-                android:text="Xin chào Minh Tú!"
+                android:text="Chúc ngày mới vui vẻ!"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:layout_centerVertical="true"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageAvatar"
@@ -63,15 +64,43 @@
             android:hint="Tìm kiếm chuyến đi"
             android:paddingHorizontal="10dp"
             android:textColor="@color/black"
-            android:textColorHint="#62878F" />
+            android:textColorHint="#62878F"
+            android:visibility="gone" />
+
     </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/gr_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:backgroundTint="@color/color_bottom_nav"
+        android:layout_below="@+id/header_home"
+        android:layout_marginTop="-60dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleview_danhmucdiadiem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                tools:listitem="@layout/custom_item_list_danhmuc"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/header_home">
+        android:layout_below="@+id/gr_category">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -93,13 +122,9 @@
 <!--                    android:textColor="@color/mycolor"-->
 <!--                    android:textSize="20sp" />-->
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycleview_danhmucdiadiem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="5dp" />
+
             </RelativeLayout>
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewpager_diadiemnoibat"
                 android:layout_width="match_parent"
@@ -107,8 +132,7 @@
                 android:layout_below="@+id/txt_danhmucdiadiem"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginEnd="10dp" />
             <RelativeLayout
                 android:id="@+id/txt_motsodiadiem"
                 android:layout_width="match_parent"
@@ -123,9 +147,9 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Một số địa điểm"
+                    android:text="Gợi ý cho bạn"
                     android:textColor="@color/mycolor"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_see_all_tour"
@@ -138,7 +162,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="Xem tất cả"
                     android:textColor="@color/mycolor"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </RelativeLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleview_list_tour_home"

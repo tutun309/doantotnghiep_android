@@ -10,8 +10,22 @@ public class User implements Serializable {
     private String address = "";
     private String img = "";
     private int vaitroId = 1;
+    private String phoneNumber = "";
+
+    public static final int  NGUOI_DUNG = 1;
+    public static final int  ADMIN = 0;
 
     public User() {
+    }
+
+    public User(String email, String password, String name, String address, String img, int vaitroId, String phone) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.address = address;
+        this.img = img;
+        this.vaitroId = vaitroId;
+        this.phoneNumber = phone;
     }
 
     public User(String email, String password, String name, String address, String img, int vaitroId) {
@@ -77,6 +91,14 @@ public class User implements Serializable {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
