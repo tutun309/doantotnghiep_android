@@ -7,4 +7,6 @@ data class Comment(
    var rating: Float = 0f,
    var content: String = "",
    var tourId: Int = 0,
+   var imgUser: String = "",
+   var userName: String = ""
 )

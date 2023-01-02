@@ -22,15 +22,22 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nmt.minhtu.doan.ImgFromGrallery;
 import com.nmt.minhtu.doan.R;
+import com.nmt.minhtu.doan.activity.ListTourActivity;
 import com.nmt.minhtu.doan.activity.booking.ConfirmInfoBookingDialog;
+import com.nmt.minhtu.doan.adapter.AdminListTourAdapter;
+import com.nmt.minhtu.doan.adapter.CommentAdapter;
 import com.nmt.minhtu.doan.api.ApiService;
 import com.nmt.minhtu.doan.api.BaseResponse;
+import com.nmt.minhtu.doan.api.BaseResponsePost;
 import com.nmt.minhtu.doan.api.ResponsePOST;
 import com.nmt.minhtu.doan.data_local.DataLocalManager;
 import com.nmt.minhtu.doan.model.Booking;
+import com.nmt.minhtu.doan.model.Comment;
 import com.nmt.minhtu.doan.model.Favorite;
 import com.nmt.minhtu.doan.model.Ticket;
 import com.nmt.minhtu.doan.model.TicketBooking;
@@ -39,8 +46,10 @@ import com.nmt.minhtu.doan.model.Tour;
 import com.nmt.minhtu.doan.model.User;
 import com.nmt.minhtu.doan.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,17 +57,19 @@ import retrofit2.Response;
 
 public class DetailTourActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
-    private TextView iconBack, txtName, txtCategory, txtPeriodTime, txtDesc, iconFavorite, tvDate;
+    private TextView iconBack, txtName, txtCategory, txtPeriodTime, txtDesc, iconFavorite, tvDate, tvComment;
     private TextView tvPriceAdult, tvPriceChildren, tvPlusAdult, tvMinusAdult, tvPlusChildren, tvMinusChildren, tvTotalPrice, tvNumberTicketAdult, tvNumberTicketChildren;
     private ImageView imgTour;
     private ImageView btnFavorite;
     private Button btnBooking;
     private RelativeLayout grPickDate;
+    private RecyclerView rcvComment;
+
     private Tour tour;
     private TicketModel ticket;
     private String timeStart = "", timeBooking = "";
     private int numberTicketAdult = 0, numberTicketChildren = 0, priceTotal = 0;
-
+    private List<Comment> comments = new ArrayList<>();
     private boolean isFavorite = false;
 
     @Override
@@ -80,7 +91,58 @@ public class DetailTourActivity extends AppCompatActivity {
     private void loadData() {
         setCurrentTour();
         getTicketPrice();
+        getComment();
         checkIsFavorite();
+    }
+
+    private void getComment() {
+        Intent intent = getIntent();
+        int tourId = intent.getIntExtra("currentTourId", 1);
+        ApiService.apiService.getCommentByBookingTourId(tourId).enqueue(new Callback<BaseResponsePost<List<Comment>>>() {
+            @Override
+            public void onResponse(Call<BaseResponsePost<List<Comment>>> call, Response<BaseResponsePost<List<Comment>>> response) {
+                assert response.body() != null;
+                if(!response.body().getData().isEmpty()) {
+                    comments = response.body().getData();
+                    mapUserToComment();
+                    tvComment.setVisibility(View.VISIBLE);
+                } else {
+                    tvComment.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponsePost<List<Comment>>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void mapUserToComment() {
+        ApiService.apiService.getListUser().enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                assert response.body() != null;
+                if(!response.body().isEmpty()) {
+                    for(User item : response.body()) {
+                        for(Comment comment: comments) {
+                            if(comment.getUserId() == item.getId()) {
+                                comment.setImgUser(item.getImg());
+                                comment.setUserName(item.getName());
+                            }
+                        }
+                    }
+                    CommentAdapter adapter = new CommentAdapter(comments);
+                    rcvComment.setAdapter(adapter);
+                    rcvComment.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -430,5 +492,7 @@ public class DetailTourActivity extends AppCompatActivity {
         tvNumberTicketChildren = findViewById(R.id.tv_number_ticket_children);
         grPickDate = findViewById(R.id.gr_pick_date);
         tvDate = findViewById(R.id.tv_date);
+        rcvComment = findViewById(R.id.rcv_comment);
+        tvComment = findViewById(R.id.tv_comment);
     }
 }

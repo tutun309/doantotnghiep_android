@@ -146,4 +146,7 @@ public interface ApiService {
 
     @GET("/api/comment/get-comment-by-bookingId/{bookingId}")
     Call<BaseResponsePost<Comment>> getCommentByBookingId(@Path("bookingId") int bookingId);
+
+    @GET("/api/comment/get-comment-by-tourId/{tourId}")
+    Call<BaseResponsePost<List<Comment>>> getCommentByBookingTourId(@Path("tourId") int tourId);
 }

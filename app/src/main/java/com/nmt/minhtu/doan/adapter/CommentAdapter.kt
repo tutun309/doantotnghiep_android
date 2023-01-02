@@ -7,64 +7,45 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.nmt.minhtu.doan.ImgFromGrallery
 import com.nmt.minhtu.doan.adapter.BookedTourAdaper.BookedTourViewHolder
+import com.nmt.minhtu.doan.databinding.ItemCommentBinding
 import com.nmt.minhtu.doan.model.BookedTour
+import com.nmt.minhtu.doan.model.Comment
 
-/*
-class CommentAdapterprivate(
-    private var employeeList: MutableList<Employee>
-) : RecyclerView.Adapter<EmployeeListAdapter.EmployeeViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeViewHolder {
+class CommentAdapter(
+    private var listComment: List<Comment>
+) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val itemEmployeeBinding: ItemEmployeeBinding =
-            ItemEmployeeBinding.inflate(inflater, parent, false);
-        return EmployeeViewHolder(itemEmployeeBinding)
+        val itemEmployeeBinding: ItemCommentBinding =
+            ItemCommentBinding.inflate(inflater, parent, false);
+        return CommentViewHolder(itemEmployeeBinding)
     }
 
-    override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
-        holder.onBind(employeeList[holder.adapterPosition])
+    override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
+        holder.onBind(listComment[holder.adapterPosition])
     }
 
     override fun getItemCount(): Int {
-        return employeeList.size
+        return listComment.size
     }
 
-    inner class EmployeeViewHolder(private var itemEmployeeBinding: ItemEmployeeBinding) :
-        RecyclerView.ViewHolder(itemEmployeeBinding.root) {
-        fun onBind(employee: Employee) {
-            itemEmployeeBinding.employee = employee
-            itemEmployeeBinding.btnRemove.setOnClickListener {
-                iClickItem.onClickRemoveItem(adapterPosition)
-            }
-            itemEmployeeBinding.btnEdit.setOnClickListener {
-                iClickItem.onClickUpdateItem(employeeList[adapterPosition], adapterPosition)
-            }
+    inner class CommentViewHolder(private var binding: ItemCommentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(comment: Comment) {
+            binding.imgAvt.setImageBitmap(ImgFromGrallery.deCodeToBase64(comment.imgUser))
+            binding.tvName.text = comment.userName
+            binding.tvRating.rating = comment.rating
+            binding.tvContent.text = comment.content
         }
     }
 
-    fun addEmployee(employee: Employee) {
-        var index = employeeList.size
-        employeeList.add(employee)
-        if (index > 0) {
-            notifyItemChanged(index)
-        } else {
-            notifyItemChanged(0)
-        }
-    }
-
-    fun removeEmployee(position: Int) {
-        employeeList.removeAt(position)
-        notifyItemRemoved(position)
-    }
-
-    fun updateEmployee(employee: Employee, position: Int) {
-        employeeList.set(position, employee)
-        notifyItemChanged(position)
-    }
-
-    fun setListEmployee(employeeList: MutableList<Employee>) {
-        this.employeeList = employeeList
+    fun setListEmployee(listComment: List<Comment>) {
+        this.listComment = listComment
         notifyDataSetChanged()
     }
-}*/
+
+}
